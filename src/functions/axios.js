@@ -22,6 +22,8 @@ export async function checkSession() {
     withCredentials: true,
   });
   const data = await response.data;
-  
+
   return data;
 }
+
+
