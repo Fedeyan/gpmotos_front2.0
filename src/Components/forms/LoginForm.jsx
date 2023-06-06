@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { login } from "../../functions/axios";
-import Cookies from "js-cookie";
 
 const LoginForm = () => {
   const [password, setPassword] = useState("");
@@ -9,8 +8,8 @@ const LoginForm = () => {
   async function loginHandler(e) {
     const response = await login(e, String(username), String(password));
     if (response === true) {
-      Cookies.set("conbol");
-      return window.location.replace("/profile");
+      alert("has iniciado sesion correctamente");
+      window.location.replace("/");
     }
   }
 

@@ -16,7 +16,20 @@ export async function login(event, username, password) {
   const response = await axiosPOST.data;
   return response;
 }
-
+//logout
+export async function logout() {
+  const axiosResponse = await axios.post(
+    `${REACT_APP_API_URL}/auth/logout`,
+    {},
+    {
+      withCredentials: true,
+    }
+  );
+  const data = await axiosResponse.data;
+  window.location.replace("/");
+  return data;
+}
+//check
 export async function checkSession() {
   const response = await axios.get(`${REACT_APP_API_URL}/checksession`, {
     withCredentials: true,
@@ -25,5 +38,3 @@ export async function checkSession() {
 
   return data;
 }
-
-

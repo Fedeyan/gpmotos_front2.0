@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { checkSession } from "./functions/axios";
 import Nav from "./Components/nav/Nav";
 import HomeLayout from "./Components/layouts/HomeLayout";
+import PrivateRoute from "./Components/layouts/PrivateRoute";
+import Profile from "./Pages/Profile";
 
 function App() {
   let [log, setLog] = useState(false);
@@ -22,6 +24,9 @@ function App() {
           <Route path="/auth" element={<AuthHandler log={log} />}>
             <Route path="/auth/register" element={<Auth />} />
             <Route path="/auth/login" element={<Auth />} />
+          </Route>
+          <Route element={<PrivateRoute log={log}/>}>
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>
