@@ -4,12 +4,11 @@ import { login } from "../../functions/axios";
 const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-
   async function loginHandler(e) {
     const response = await login(e, String(username), String(password));
     if (response === true) {
       alert("has iniciado sesion correctamente");
-      window.location.replace("/");
+      window.location.replace("/")
     }
   }
 

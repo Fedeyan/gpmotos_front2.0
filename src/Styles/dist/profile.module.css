@@ -1,0 +1,58 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.baseProfileData {
+  background-color: lightgray;
+  display: flex;
+  padding: 1em;
+  margin: 1em 2em;
+  border-radius: 1em;
+}
+.profileImage {
+  width: 100px;
+  border-radius: 100%;
+  box-shadow: 0 0 5px gray;
+}
+.profile_stuff {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 1em;
+}
+.optionsContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.optionsUl {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  background-color: lightgray;
+  width: 50%;
+  padding: 1em;
+  list-style: none;
+  border-radius: 10px 10px 0 0;
+}
+.optionsLi {
+  display: grid;
+  grid-template-columns: 10% 1fr 10%;
+  background-color: darkorange;
+  margin: 2px 1em;
+  padding: 0.4em;
+  width: 100%;
+  justify-content: right;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+}
+.optionsLi span {
+  width: 100%;
+}
+.optionsIcon {
+  margin-right: 10em;
+}
