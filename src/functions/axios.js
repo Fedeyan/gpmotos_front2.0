@@ -29,6 +29,70 @@ export async function logout() {
   window.location.replace("/");
   return data;
 }
+
+//register
+
+export async function register(
+  event,
+  firstName,
+  lastName,
+  username,
+  email,
+  phone_areacode,
+  phone,
+  password
+) {
+  event.preventDefault();
+  const axiosPOST = await axios.post(
+    `${REACT_APP_API_URL}/register`,
+    {
+      firstName,
+      lastName,
+      username,
+      email,
+      phone_areacode,
+      phone,
+      password,
+    },
+    { withCredentials: true }
+  );
+  const response = await axiosPOST.data;
+  return response;
+}
+
+//addProduct
+export async function addProduct(
+  code,
+  name,
+  brand,
+  model,
+  description,
+  stock,
+  image
+) {
+  const axiosPOST = await axios.post(
+    `${REACT_APP_API_URL}/products`,
+    {
+      code,
+      name,
+      brand,
+      model,
+      description,
+      stock,
+      productImage: image,
+    },
+    {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+
+  const data = await axiosPOST.data;
+  return data;
+}
+
 //check
 export async function checkSession() {
   const response = await axios.get(`${REACT_APP_API_URL}/checksession`, {
