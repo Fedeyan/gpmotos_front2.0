@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkSessionAction, getUserdata } from "./redux/userSlice";
 import AdminPrivateRoutes from "./Components/layouts/AdminPrivateRoutes";
 import Dashboard from "./Pages/admin/Dashboard";
-import socket from "./socket";
+import socket, { socketEmitWithDispatch } from "./socket";
 import { fetchItems } from "./redux/productsSlice";
 
 function App() {
@@ -22,8 +22,9 @@ function App() {
         let result = dispatch(checkSessionAction());
         return result;
       }
-      socket.on("connect", function () {
-        console.log("Connection succeful");
+      socket.on("connected_succeful", function () {
+        console.log("Connection succeful 2.0");
+
         session().then(function (result) {
           if (result.payload === true) {
             if (!store.userdata?.length) {
@@ -32,11 +33,7 @@ function App() {
           }
         });
       });
-      socket.on("add_product", function () {
-        dispatch(fetchItems());
-      });
-
-      socket.on("test", ()=>alert("test"))
+      socketEmitWithDispatch("add_product", socket, dispatch, fetchItems);
     },
     [dispatch, store.userdata.length]
   );
