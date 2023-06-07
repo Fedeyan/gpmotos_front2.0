@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkSessionAction, getUserdata } from "./redux/userSlice";
 import AdminPrivateRoutes from "./Components/layouts/AdminPrivateRoutes";
 import Dashboard from "./Pages/admin/Dashboard";
+import socket from "./socket";
+import { fetchItems } from "./redux/productsSlice";
 
 function App() {
   const store = useSelector((store) => store.user);
@@ -18,16 +20,23 @@ function App() {
     function () {
       async function session() {
         let result = dispatch(checkSessionAction());
-
         return result;
       }
-      session().then(function (result) {
-        if (result.payload === true) {
-          if (!store.userdata?.length) {
-            dispatch(getUserdata());
+      socket.on("connect", function () {
+        console.log("Connection succeful");
+        session().then(function (result) {
+          if (result.payload === true) {
+            if (!store.userdata?.length) {
+              dispatch(getUserdata());
+            }
           }
-        }
+        });
       });
+      socket.on("add_product", function () {
+        dispatch(fetchItems());
+      });
+
+      socket.on("test", ()=>alert("test"))
     },
     [dispatch, store.userdata.length]
   );
