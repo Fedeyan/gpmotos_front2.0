@@ -5,6 +5,7 @@
   display: flex;
   list-style: none;
   justify-content: center;
+  align-items: center;
 }
 .logoutForm {
   display: flex;
@@ -18,4 +19,31 @@
   border: none;
   background: none;
   font-size: large;
+  height: 100%;
+}
+.navLink:hover {
+  background-color: #292929;
+}
+.alertccteiner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.notificationsCount_container {
+  display: flex;
+  background-color: red;
+  border-radius: 100%;
+  width: 1.3em;
+  height: 1.3em;
+  font-size: 1em;
+  position: relative;
+  margin-left: 0.1em;
+  font-size: small;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.notificationsCount {
+  text-align: center;
+  vertical-align: middle;
 }

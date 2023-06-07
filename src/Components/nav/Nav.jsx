@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { logout } from "../../functions/axios";
 import { useSelector } from "react-redux";
 import Styles from "../../Styles/dist/nav.module.css";
+import Notifications from "../notifications/Notifications";
 
 const Nav = () => {
   const store = useSelector((store) => store.user);
@@ -33,11 +34,27 @@ const Nav = () => {
           <>
             {userdata.Userdata?.role === "admin" ? (
               <li>
-                <NavLink className={Styles.navLink}>
+                <NavLink to={"/dashboard"} className={Styles.navLink}>
                   Administrar
                 </NavLink>
               </li>
             ) : null}
+            <li className={Styles.alertccteiner + " " + Styles.navLink}>
+              <button className={Styles.navLink}>Alertas</button>
+              <div
+                style={{
+                  display: userdata.Userdata?.notifications?.length
+                    ? "flex"
+                    : "none",
+                }}
+                className={Styles.notificationsCount_container}
+              >
+                <i className={Styles.notificationsCount}>
+                  {userdata.Userdata?.notifications?.length}
+                </i>
+              </div>
+              <Notifications />
+            </li>
             <li>
               <NavLink className={Styles.navLink} to={"/profile"}>
                 Perfil

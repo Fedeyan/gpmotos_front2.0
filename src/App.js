@@ -8,6 +8,8 @@ import PrivateRoute from "./Components/layouts/PrivateRoute";
 import Profile from "./Pages/Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { checkSessionAction, getUserdata } from "./redux/userSlice";
+import AdminPrivateRoutes from "./Components/layouts/AdminPrivateRoutes";
+import Dashboard from "./Pages/admin/Dashboard";
 
 function App() {
   const store = useSelector((store) => store.user);
@@ -42,6 +44,9 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/info" element={<div>Test</div>} />
+            <Route element={<AdminPrivateRoutes />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

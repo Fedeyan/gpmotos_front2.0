@@ -1,0 +1,30 @@
+.container {
+  position: absolute;
+  top: 3em;
+  translate: -40%;
+}
+.notifications {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  box-shadow: 0 0 5px gray;
+  padding: 0.5em 0;
+  max-height: 188px;
+  overflow: auto;
+  width: 120%;
+  color: black;
+  padding-top: 1.4em;
+  padding-bottom: 0.1em;
+  min-width: 274px;
+}
+.notification {
+  padding: 0 0.2em;
+  background-color: white;
+}
+.notification h3 {
+  text-align: center;
+}
+.notification:nth-child(even) {
+  background-color: #eaeaea;
+}
