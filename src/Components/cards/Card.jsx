@@ -16,14 +16,20 @@ const Card = ({ product }) => {
         }
         alt=""
       />
-      <h3 className={Styles.name}>{product.name || loadingString}</h3>
-      <h3 className={Styles.brand}>{product.brand || loadingString}</h3>
-      <h3 className={Styles.model}>{product.model}</h3>
-      <p className={Styles.description}>
-        {product.description || loadingString}
-      </p>
-      <button>Agregar al carrito</button>
-      <button>Consultar precio</button>
+      <div className={Styles.datacontainer}>
+        <h3 className={Styles.name}>{product.name || loadingString}</h3>
+        <h3 className={Styles.brand}>{`Marca: ${product.brand}` || loadingString}</h3>
+        <h3 className={Styles.model}>{`Modeleo: ${product.model}`}</h3>
+        <p className={Styles.description}>
+          {product.description || loadingString}
+        </p>
+      </div>
+
+      <div className={Styles.btnContainer}>
+        <button className={Styles.button}>Añadir</button>
+
+        <button className={Styles.button}>Consultar precio</button>
+      </div>
     </div>
   );
 };

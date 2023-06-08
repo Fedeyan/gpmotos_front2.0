@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItems } from "../../../redux/productsSlice";
 import Card from "../../../Components/cards/Card";
+import Styles from "../../../Styles/dist/common_styles.module.css";
 
 const CardsContainer = () => {
   const store = useSelector((store) => store.products);
@@ -24,7 +25,7 @@ const CardsContainer = () => {
   }
 
   return (
-    <div>
+    <div className={Styles.centered_items_container}>
       {typeof all_items === "string" ? all_items : showCards(all_items)}
     </div>
   );
