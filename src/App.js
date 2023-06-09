@@ -14,6 +14,7 @@ import socket, { socketEmitWithDispatch } from "./socket";
 import { fetchItems } from "./redux/productsSlice";
 import AddProduct from "./Pages/admin/AddProduct";
 
+
 function App() {
   const store = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ function App() {
             <Route path="/profile/info" element={<div>Test</div>} />
             <Route element={<AdminPrivateRoutes />}>
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/admin/addproduct" element={<AddProduct/>} />
+              <Route path="/admin/addproduct" element={<AddProduct />} />
             </Route>
           </Route>
         </Routes>

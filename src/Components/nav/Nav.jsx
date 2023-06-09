@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { logout } from "../../functions/axios";
 import { useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import Notifications from "../notifications/Notifications";
 const Nav = () => {
   const store = useSelector((store) => store.user);
   const { sessionBool, userdata } = store;
-
+  const [showNotifications, setShowNotifications] = useState(false);
   function logOutHandler(e) {
     e.preventDefault();
     logout();
@@ -40,7 +40,12 @@ const Nav = () => {
               </li>
             ) : null}
             <li className={Styles.alertccteiner + " " + Styles.navLink}>
-              <button className={Styles.navLink}>Alertas</button>
+              <button
+                onClick={() => setShowNotifications(!showNotifications)}
+                className={Styles.navLink}
+              >
+                Alertas
+              </button>
               <div
                 style={{
                   display: userdata.Userdata?.notifications?.length
@@ -53,7 +58,7 @@ const Nav = () => {
                   {userdata.Userdata?.notifications?.length}
                 </i>
               </div>
-              <Notifications />
+              {!!showNotifications ? <Notifications /> : null}
             </li>
             <li>
               <NavLink className={Styles.navLink} to={"/profile"}>

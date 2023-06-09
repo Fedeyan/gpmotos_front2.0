@@ -3,19 +3,25 @@ import Styles from "../../Styles/dist/notifications.module.css";
 import { useSelector } from "react-redux";
 const Notifications = () => {
   const store = useSelector((store) => store.user);
-  const { userdata } = store;
+  const { Userdata } = store?.userdata;
   return (
-    <div
-      className={Styles.container}
-      style={{
-        display: userdata.Userdatas?.notifications.length ? "flex" : "none",
-      }}
-    >
-      <ul className={Styles.notifications}>
-        {/* <li className={Styles.notification}>
-          <h3>Titulo de la notificacion</h3>
-          <span>Preview de la notificacion</span>
-        </li> */}
+    <div className={Styles.container}>
+      <ul className={Styles.ul}>
+        {Userdata?.notifications?.map(function (n, i) {
+          const { title, preview } = JSON.parse(n);
+          return (
+            <li className={Styles.notification} key={i}>
+              <h4
+                className={`${Styles.title} ${
+                  Styles[!!n.seen ? "seen" : "new"]
+                }`}
+              >
+                {title}
+              </h4>
+              <span className={Styles.preview}>{preview}</span>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
